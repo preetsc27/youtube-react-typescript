@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Todo from './component/Todo';
 
 interface IAppState{
   age: number
@@ -37,6 +38,10 @@ class App extends Component<any, IAppState> {
        <p>My Age: {this.state.age} </p>
        <button onClick={this.incrementAge}>+</button>
        <button onClick={this.decrementAge}>-</button>
+       <br />
+       <br />
+       <br />
+       <Todo title="Call Mom" checked={true}  />
       </div>
     );
   }
