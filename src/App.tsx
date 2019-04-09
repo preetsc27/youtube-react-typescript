@@ -3,7 +3,7 @@ import './App.css';
 import Todo from './component/Todo';
 
 interface IAppState{
-  age: number
+  email:string
 }
 
 class App extends Component<any, IAppState> {
@@ -11,37 +11,22 @@ class App extends Component<any, IAppState> {
   constructor(props: any){
     super(props)
     this.state = {
-      age: 0
+      email: ""
     }
 
-    this.incrementAge = this.incrementAge.bind(this)
-    this.decrementAge = this.decrementAge.bind(this)
+    this.changeMyInput = this.changeMyInput.bind(this)
   }
 
-  incrementAge(){
-    const { age } = this.state
+  changeMyInput(e: React.ChangeEvent<HTMLInputElement>){
     this.setState({
-      age: age + 1
+      ...this.state,
+      [e.currentTarget.name]: e.currentTarget.value
     })
   }
-
-  decrementAge(){
-    const { age } = this.state
-    this.setState({
-      age: age - 1
-    })
-  }
-
   render() {
     return (
       <div className="App">
-       <p>My Age: {this.state.age} </p>
-       <button onClick={this.incrementAge}>+</button>
-       <button onClick={this.decrementAge}>-</button>
-       <br />
-       <br />
-       <br />
-       <Todo title="Call Mom" checked={true}  />
+        <input name="email" value={this.state.email} onChange={this.changeMyInput} />
       </div>
     );
   }
